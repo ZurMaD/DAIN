@@ -1,3 +1,18 @@
+## Docker specific
+To build the docker image you can run the following command:
+
+    sudo docker build -t miscoriadev/dain:1.1.0 .
+
+Create a folder in your home folder called 'docker' (`~/docker`) and add an 'input' (`~/docker/input`) folder. Fill the input folder with frames.
+The frames should be in the following format: `Frame-#####.png`
+
+To run the docker container you can use the following command:
+
+    sudo docker run --gpus all --rm -ti -v ~/docker:/home/DAIN/sharedfs --name dain miscoriadev/dain:1.1.0
+
+Please note that the current CMD in the docker file runs `infer.py` which is a script that takes the frames from `/home/DAIN/sharedfs` and inferes them and puts the resulting frames into the 'output' (`~/docker/output`) folder. (you can ofcourse change this to you liking)
+
+
 # DAIN (Depth-Aware Video Frame Interpolation)
 [Project](https://sites.google.com/view/wenbobao/dain) **|** [Paper](http://arxiv.org/abs/1904.00830)
 
@@ -229,15 +244,9 @@ Then test the new model by executing:
 This is a modification of DAIN that allows the usage of Google Colab and is able to do a full demo interpolation from a source video to a target video.
 
 Original Notebook File by btahir can be found [here](https://github.com/baowenbo/DAIN/issues/44).
+This is a modification by [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit).
 
-To use the Colab, follow these steps:
-
-- Download the `Colab_DAIN.ipynb` file ([link](https://raw.githubusercontent.com/baowenbo/DAIN/master/Colab_DAIN.ipynb)).
-- Visit Google Colaboratory ([link](https://colab.research.google.com/))
-- Select the "Upload" option, and upload the `.ipynb` file
-- Start running the cells one by one, following the instructions.
-
-Colab file authors: [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit).
+Simply upload the `Colab_DAIN.ipynb` file to your Google Drive or use this [link](https://colab.research.google.com/drive/1gzsfDV_MIdehr7Y8ZzWjTuW-mMZRP4Vy).
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
